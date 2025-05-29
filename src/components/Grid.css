@@ -1,0 +1,42 @@
+/* src/components/Grid.css */
+.sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, auto);
+  border: 2px solid #333; /* Main grid border */
+  width: fit-content;
+  margin: 20px auto;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  overflow: hidden; 
+  background-color: #fff; /* Ensure grid background is white */
+}
+
+.sudoku-grid.grid-solved .cell:not(.cell-fixed) {
+  /* Optional: if you want to style user-entered numbers differently when solved */
+  /* color: #28a745; */ /* Example: green for user's correct numbers */
+  /* font-weight: bold; */
+}
+
+.sudoku-row {
+  display: contents; 
+}
+
+.cell-container {
+  /* This container helps manage the borders correctly */
+  position: relative; /* For potential future use with overlays or indicators */
+}
+
+/* Apply thicker borders to the containers for the 3x3 subgrids */
+.cell-container-border-right .cell {
+  border-right: 2px solid #333;
+}
+
+.cell-container-border-bottom .cell {
+  border-bottom: 2px solid #333;
+}
+
+/* Ensure the outer border of the main grid is not overridden by cell borders */
+/* This is generally handled by `overflow: hidden` on .sudoku-grid 
+   and ensuring cells don't have borders that extend outside the main grid border. 
+   The current setup with cell borders and container borders should work well. 
+*/

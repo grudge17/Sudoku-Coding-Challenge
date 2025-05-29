@@ -1,0 +1,61 @@
+/* src/components/Cell.css */
+.cell {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  text-align: center;
+  box-sizing: border-box;
+  caret-color: transparent; /* Hide caret by default, show on focus if needed */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.cell-fixed {
+  background-color: #e9ecef; /* Slightly different shade for fixed numbers */
+  font-weight: bold;
+  color: #343a40;
+}
+
+.cell:focus {
+  outline: none; /* Remove default outline, selection is handled by cell-selected */
+}
+
+.cell-editable:hover {
+  background-color: #f8f9fa; /* Light hover for editable cells */
+}
+
+.cell-selected {
+  background-color: #cfe2ff; /* Bootstrap primary light blue for selection */
+  outline: 2px solid #007bff; /* Blue outline for selected */
+  z-index: 10; /* Ensure selected cell is on top */
+}
+
+.cell-conflict {
+  background-color: #f8d7da; /* Bootstrap danger light red for conflicts */
+  color: #721c24; /* Darker red for text in conflicted cells */
+  font-weight: bold;
+}
+
+.cell-conflict.cell-selected {
+  background-color: #f5c6cb; /* Slightly darker red when selected and conflicted */
+}
+
+.cell-solved-editable {
+  color: #007bff; /* Blue color for user-entered numbers when solved */
+  /* background-color: #e6ffed; */ /* Optional: light green background for user solved cells */
+}
+
+/* Add some styling for 3x3 blocks */
+/* These are now applied to cell-container in Grid.css but good to keep for reference or direct cell styling */
+/* 
+.cell.border-right {
+  border-right: 2px solid #333;
+}
+
+.cell.border-bottom {
+  border-bottom: 2px solid #333;
+}
+*/

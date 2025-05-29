@@ -1,0 +1,195 @@
+/* src/App.css */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  background-color: #f4f7f6; /* Light grayish background */
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align to top for scroll */
+  min-height: 100vh;
+  padding-top: 20px; /* Add some padding at the top */
+}
+
+.App {
+  text-align: center;
+  background-color: #fff; /* White background for the app container */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 90vw; /* Max width to keep it contained on large screens */
+  width: fit-content; /* Adjust to content size */
+}
+
+.App-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.App-header h1 {
+  margin: 0 0 10px 0;
+  color: #007bff; /* Blue for the main title */
+  font-size: 2.5em;
+}
+
+.difficulty-selector {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.difficulty-selector label {
+  margin-right: 8px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.difficulty-selector select {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  font-size: 0.9em;
+  background-color: #fff;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.difficulty-selector select:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px; /* Adjusted padding */
+  margin-bottom: 15px;
+  font-size: 0.95em;
+  min-height: 25px; /* Ensure it has some height even if message is empty */
+}
+
+.timer {
+  color: #28a745; /* Green for timer */
+  font-weight: bold;
+}
+
+.status-message {
+  color: #17a2b8; /* Info blue for status messages */
+  font-style: italic;
+  text-align: right;
+  flex-grow: 1; /* Allow message to take available space */
+  padding-left: 15px; /* Space between timer and message */
+}
+
+.controls {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  gap: 10px; /* Spacing between buttons */
+  justify-content: center;
+}
+
+.controls button {
+  padding: 10px 15px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff; /* Primary blue */
+  color: white;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+  min-width: 100px; /* Minimum width for buttons */
+}
+
+.controls button:hover:not(:disabled) {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-1px);
+}
+
+.controls button:active:not(:disabled) {
+  transform: translateY(0px);
+}
+
+.controls button:disabled {
+  background-color: #6c757d; /* Gray for disabled buttons */
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .App {
+    padding: 15px;
+    max-width: 95vw;
+  }
+
+  .App-header h1 {
+    font-size: 2em;
+  }
+
+  .cell {
+    width: 35px; /* Slightly smaller cells for smaller screens */
+    height: 35px;
+    font-size: 1.2em;
+  }
+
+  .controls button {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    min-width: 80px;
+  }
+
+  .game-info {
+    flex-direction: column; /* Stack timer and status message */
+    align-items: center;
+    gap: 5px;
+  }
+  .status-message {
+    text-align: center;
+    padding-left: 0;
+  }
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
