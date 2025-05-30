@@ -1,12 +1,10 @@
-# Sudoku Game: A Modern Web Application
+# Sudoku Game
 
-**Live Demo:** [Link to Deployed Application (if applicable)]
+##  Project Overview
 
-## 🎯 Project Overview
+This project is an interactive Sudoku game developed as a demonstration of modern web development capabilities.
 
-This project is a sophisticated, interactive Sudoku game developed as a demonstration of modern web development capabilities. It showcases a robust frontend built with React and TypeScript, emphasizing clean code, maintainability, and a seamless user experience. The game features dynamic puzzle generation, multiple difficulty levels, real-time input validation, and a suite of user-assistance tools.
-
-## ✨ Core Features
+##  Core Features
 
 *   **Dynamic Sudoku Grid:** Interactive and responsive 9x9 grid.
 *   **Client-Side Puzzle Generation:** Ensures unique puzzles are generated efficiently in the browser for various skill levels.
@@ -21,43 +19,31 @@ This project is a sophisticated, interactive Sudoku game developed as a demonstr
 *   **Responsive & Modern UI:** Aesthetically pleasing design optimized for various screen sizes using CSS best practices.
 *   **State Management:** Efficiently handled using React Hooks for a predictable and performant application state.
 
-## 🛠️ Tech Stack & Design Rationale
+##  Tech Stack 
 
-The selection of technologies was driven by the goal of building a high-quality, scalable, and maintainable application:
+These technologies were chosen to build this app
 
 *   **React (v19+):** Chosen for its component-based architecture, declarative UI, and extensive ecosystem, facilitating the creation of a modular and interactive user interface.
-*   **TypeScript:** Integrated to leverage static typing, enhancing code quality, reducing runtime errors, and improving developer experience through better autocompletion and refactoring capabilities.
-*   **Vite:** Utilized as the build tool and development server for its blazing-fast Hot Module Replacement (HMR) and optimized build process.
+
 *   **Lodash:** Employed for its utility functions, specifically for array manipulation (`_.shuffle`), deep cloning (`_.cloneDeep`) to ensure immutability in state management, and random number generation (`_.random`) for puzzle generation and hints. These utilities help write more concise and robust logic.
-*   **CSS3:** Leveraged for modern styling, including Flexbox/Grid for layout, custom properties (variables) for theming, and media queries for responsiveness.
-*   **ESLint:** Configured for code linting to maintain consistent code style and identify potential issues early.
+
 
 ## ⚙️ Software Engineering & Development Workflow
 
-This project was developed adhering to industry-standard software engineering practices to ensure robustness and collaboration readiness.
+I developed this project adhering to best software development practices.
 
 ### Version Control & Branching Strategy
 
 *   **Git:** Utilized for version control.
-*   **Development Branch (`develop`):** A central `develop` branch served as the primary integration branch for new features.
-*   **Feature Branches:** All new features and significant changes were developed in isolated `feature/*` branches (e.g., `feature/ui-enhancement`, `feature/difficulty-levels`). This practice ensures that the `develop` branch (and subsequently `main`) remains stable.
-*   **Pull Requests (PRs):** Upon completion, features were merged into the `develop` branch via Pull Requests. This workflow facilitates:
+*   **Main Branch (`Main`):** Emulating Production Environment Code
+*   **Feature Branche (`feature/dev-task`):** Branch I used to work on specific features and sub tasks. 
+*   **Pull Requests (PRs):** Upon completion, features were merged into the `Main` branch via Pull Requests. This workflow facilitates:
     *   **Code Review:** (Simulated for this project) Allowing for peer review to catch bugs, suggest improvements, and ensure adherence to coding standards.
     *   **Discussion:** A platform for discussing implementation details before merging.
     *   **CI/CD Integration:** (Conceptual) PRs are typical triggers for automated builds, tests, and linting in a CI/CD pipeline.
-*   **Main Branch (`main`):** Represents the production-ready code. Merges into `main` would typically come from `develop` after thorough testing and represent stable releases.
-*   **Commit Hygiene:** Atomic commits with clear, descriptive messages were used to track changes effectively.
 
-### Code Quality & Best Practices
 
-*   **Component-Based Architecture:** The UI is broken down into reusable React components (`Grid`, `Cell`) promoting modularity and separation of concerns.
-*   **State Management:** React Hooks (`useState`, `useEffect`, `useCallback`) are used for managing local component state and side effects, ensuring a unidirectional data flow where appropriate.
-*   **Modularity:** Business logic for Sudoku generation, validation, and solving is encapsulated within `src/utils/sudokuLogic.ts`, separating it from the UI components.
-*   **Error Handling & User Feedback:** The application provides clear status messages for game events, errors, and puzzle completion. Conflicts are visually highlighted.
-*   **Immutability:** State updates, particularly for the Sudoku grid, are handled immutably (e.g., using `_.cloneDeep` or spreading techniques) to prevent side effects and ensure predictable state changes.
-*   **Readability & Maintainability:** Code is commented where necessary, and TypeScript's static typing contributes significantly to understanding data structures and function signatures.
-
-## 🚀 Getting Started
+## Getting Started
 
 To set up and run this project locally, please follow these steps:
 
@@ -98,14 +84,14 @@ yarn dev
 ```
 This will launch the Vite development server, typically accessible at `http://localhost:5173`. Open this URL in your web browser.
 
-## 📜 Available Scripts
+##  Available Scripts
 
 *   `npm run dev` or `yarn dev`: Starts the development server.
 *   `npm run build` or `yarn build`: Creates a production-ready build in the `dist` folder.
 *   `npm run lint` or `yarn lint`: Runs ESLint to analyze code for potential issues.
 *   `npm run preview` or `yarn preview`: Serves the production build locally for testing.
 
-## 🔮 Future Enhancements (Potential)
+##  Future Enhancements (Potential)
 
 *   **Advanced Uniqueness Check:** Implement a more robust algorithm to ensure generated puzzles have only one unique solution.
 *   **Number Palette Input:** Allow users to select numbers from a palette instead of typing.
@@ -114,3 +100,22 @@ This will launch the Vite development server, typically accessible at `http://lo
 *   **Unit & Integration Tests:** Implement a comprehensive test suite using a framework like Jest and React Testing Library.
 
 ---
+
+### Sudoku Logic (`src/utils/sudokuLogic.ts`)
+
+This file contains the core algorithms and helper functions for the Sudoku game:
+
+*   **Grid Generation (`generateSudoku`):**
+    *   Starts by creating a fully solved Sudoku grid using a backtracking algorithm (`solveSudokuFill`).
+    *   Then, it removes a certain number of cells from the solved grid to create the puzzle. The number of cells removed depends on the selected difficulty level.
+    *   Lodash\'s `_.cloneDeep` is used to create copies of the grid, and `_.shuffle` is used to randomize number placement during generation. `_.random` is used for selecting cells to remove and for hint generation.
+*   **Difficulty Level Implementation:**
+    *   The difficulty (Easy, Medium, Hard, Expert) is determined by the number of cells initially revealed.
+    *   The `generateSudoku` function receives a numerical `difficultyLevel` (e.g., 0.2 for Easy, 0.85 for Expert).
+    *   Based on this level, a range for the number of cells to remove is set:
+        *   **Easy:** Fewer cells removed (e.g., 40-46 cells removed, leaving ~35-41 clues).
+        *   **Medium:** Moderate number of cells removed (e.g., 47-53 cells removed, leaving ~28-34 clues).
+        *   **Hard/Expert:** More cells removed (e.g., 54-58 cells removed, leaving ~23-27 clues).
+    *   The actual number of cells to remove within the determined range is randomized, as is the selection of which specific cells are removed. This ensures puzzle variety.
+    *   Harder levels present fewer initial clues, requiring more complex deductions from the player.
+*   **Validation (`isSafe`):** Checks if a number can be safely placed in a cell according to Sudoku rules (no repetition in the same row, column, or 3x3 subgrid).
