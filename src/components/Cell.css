@@ -1,61 +1,88 @@
 /* src/components/Cell.css */
 .cell {
-  width: 40px;
-  height: 40px;
-  border: 1px solid #ccc;
+  width: 45px; /* Slightly larger cells */
+  height: 45px;
+  border: 1px solid var(--color-border); /* Use CSS variable */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5em;
+  font-size: 1.6em; /* Slightly larger font */
   text-align: center;
   box-sizing: border-box;
-  caret-color: transparent; /* Hide caret by default, show on focus if needed */
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  caret-color: var(--color-primary); /* Use primary color for caret */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease;
+  color: var(--color-text); /* Use CSS variable */
+  background-color: var(--color-secondary-background); /* Use CSS variable */
 }
 
 .cell-fixed {
-  background-color: #e9ecef; /* Slightly different shade for fixed numbers */
-  font-weight: bold;
-  color: #343a40;
+  background-color: var(--color-background); /* Slightly different shade for fixed numbers */
+  font-weight: 600; /* Bolder for fixed numbers */
+  color: var(--color-text); /* Ensure contrast */
+  /* opacity: 0.85; */ /* Slightly muted fixed numbers */
 }
 
 .cell:focus {
-  outline: none; /* Remove default outline, selection is handled by cell-selected */
+  outline: none;
 }
 
 .cell-editable:hover {
-  background-color: #f8f9fa; /* Light hover for editable cells */
+  background-color: rgba(var(--color-primary-rgb, 100, 108, 255), 0.1); /* Light primary color tint on hover */
 }
 
 .cell-selected {
-  background-color: #cfe2ff; /* Bootstrap primary light blue for selection */
-  outline: 2px solid #007bff; /* Blue outline for selected */
-  z-index: 10; /* Ensure selected cell is on top */
+  background-color: rgba(var(--color-primary-rgb, 100, 108, 255), 0.2); /* Primary color tint for selection */
+  /* box-shadow: inset 0 0 0 2px var(--color-primary); */ /* Inset shadow for selection */
+  outline: 2px solid var(--color-primary);
+  z-index: 10;
+  position: relative; /* Ensure outline is fully visible */
 }
+
+.cell-highlight-related {
+  background-color: rgba(var(--color-primary-rgb, 100, 108, 255), 0.05); /* Very subtle highlight for related cells */
+}
+
 
 .cell-conflict {
-  background-color: #f8d7da; /* Bootstrap danger light red for conflicts */
-  color: #721c24; /* Darker red for text in conflicted cells */
+  background-color: rgba(220, 53, 69, 0.15); /* Bootstrap danger light red with alpha */
+  color: #dc3545; /* Bootstrap danger color */
   font-weight: bold;
+  /* animation: pulse-conflict 0.8s infinite alternate; */ /* Optional: subtle animation for conflicts */
 }
 
+/* @keyframes pulse-conflict {
+  from {
+    box-shadow: 0 0 0 0px rgba(220, 53, 69, 0.3);
+  }
+  to {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0);
+  }
+} */
+
 .cell-conflict.cell-selected {
-  background-color: #f5c6cb; /* Slightly darker red when selected and conflicted */
+  background-color: rgba(220, 53, 69, 0.3); /* Darker red when selected and conflicted */
+  outline-color: #dc3545;
 }
 
 .cell-solved-editable {
-  color: #007bff; /* Blue color for user-entered numbers when solved */
-  /* background-color: #e6ffed; */ /* Optional: light green background for user solved cells */
+  color: var(--color-primary); /* Use primary color for user-entered numbers when solved */
+  font-weight: 500;
+  /* background-color: #e6ffed; */
 }
 
-/* Add some styling for 3x3 blocks */
-/* These are now applied to cell-container in Grid.css but good to keep for reference or direct cell styling */
-/* 
-.cell.border-right {
-  border-right: 2px solid #333;
+/* Responsive adjustments for cells, if not handled by App.css media queries directly targeting .cell */
+@media (max-width: 600px) {
+  .cell {
+    width: 35px;
+    height: 35px;
+    font-size: 1.3em;
+  }
 }
 
-.cell.border-bottom {
-  border-bottom: 2px solid #333;
+@media (max-width: 480px) {
+  .cell {
+    width: clamp(28px, 9.3vw, 32px); /* Responsive cell size for very small screens */
+    height: clamp(28px, 9.3vw, 32px);
+    font-size: clamp(1em, 4vw, 1.2em);
+  }
 }
-*/

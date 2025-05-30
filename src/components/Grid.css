@@ -1,42 +1,51 @@
 /* src/components/Grid.css */
+:root {
+  --color-border: #333;
+  --color-background: #fff;
+  --color-text: #000;
+  --color-success: #198754;
+}
+
 .sudoku-grid {
   display: grid;
   grid-template-columns: repeat(9, auto);
-  border: 2px solid #333; /* Main grid border */
+  border: 2px solid var(--color-border); /* Use CSS variable for border */
   width: fit-content;
-  margin: 20px auto;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  border-radius: 6px;
-  overflow: hidden; 
-  background-color: #fff; /* Ensure grid background is white */
+  margin: 25px auto; /* Increased margin */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  border-radius: 8px; /* Softer radius */
+  overflow: hidden;
+  background-color: var(--color-background); /* Use CSS variable */
+  padding: 5px; /* Add slight padding around the cells for a less cramped look */
 }
 
+/*
 .sudoku-grid.grid-solved .cell:not(.cell-fixed) {
   /* Optional: if you want to style user-entered numbers differently when solved */
-  /* color: #28a745; */ /* Example: green for user's correct numbers */
+  /* color: var(--color-success); */ /* Example: green for user\'s correct numbers */
   /* font-weight: bold; */
-}
+/*}
+*/
 
 .sudoku-row {
-  display: contents; 
+  display: contents;
 }
 
 .cell-container {
-  /* This container helps manage the borders correctly */
-  position: relative; /* For potential future use with overlays or indicators */
+  position: relative;
 }
 
 /* Apply thicker borders to the containers for the 3x3 subgrids */
 .cell-container-border-right .cell {
-  border-right: 2px solid #333;
+  border-right: 2px solid var(--color-text); /* Use a more prominent color for subgrid lines */
 }
 
 .cell-container-border-bottom .cell {
-  border-bottom: 2px solid #333;
+  border-bottom: 2px solid var(--color-text); /* Use a more prominent color for subgrid lines */
 }
 
-/* Ensure the outer border of the main grid is not overridden by cell borders */
-/* This is generally handled by `overflow: hidden` on .sudoku-grid 
-   and ensuring cells don't have borders that extend outside the main grid border. 
-   The current setup with cell borders and container borders should work well. 
-*/
+/* Ensure cell borders within the 3x3 subgrids are thinner */
+.cell {
+  /* Default border is set in Cell.css, ensure it's less prominent than subgrid borders */
+  border: 1px solid var(--color-border);
+}

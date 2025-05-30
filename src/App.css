@@ -1,149 +1,156 @@
 /* src/App.css */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
-  background-color: #f4f7f6; /* Light grayish background */
-  color: #333;
+  background-color: var(--color-background); /* Use CSS variable */
+  color: var(--color-text); /* Use CSS variable */
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Align to top for scroll */
+  align-items: flex-start;
   min-height: 100vh;
-  padding-top: 20px; /* Add some padding at the top */
+  padding-top: 30px; /* Increased padding */
+  padding-bottom: 30px; /* Added bottom padding */
+  box-sizing: border-box;
 }
 
 .App {
   text-align: center;
-  background-color: #fff; /* White background for the app container */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  max-width: 90vw; /* Max width to keep it contained on large screens */
-  width: fit-content; /* Adjust to content size */
+  background-color: var(--color-secondary-background); /* Use CSS variable */
+  padding: 25px 30px; /* Increased padding */
+  border-radius: 12px; /* Softer radius */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Softer, more diffused shadow */
+  max-width: 95vw;
+  width: fit-content;
+  border: 1px solid var(--color-border); /* Subtle border */
 }
 
 .App-header {
-  margin-bottom: 20px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border); /* Use CSS variable */
 }
 
 .App-header h1 {
-  margin: 0 0 10px 0;
-  color: #007bff; /* Blue for the main title */
-  font-size: 2.5em;
+  margin: 0 0 15px 0;
+  color: var(--color-primary); /* Use CSS variable */
+  font-size: 2.8em; /* Consistent with index.css if overridden */
+  font-weight: 600;
 }
 
 .difficulty-selector {
-  margin-top: 10px;
-  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .difficulty-selector label {
-  margin-right: 8px;
-  font-size: 0.9em;
-  color: #555;
+  margin-right: 10px;
+  font-size: 0.95em;
+  color: var(--color-text); /* Use CSS variable */
 }
 
 .difficulty-selector select {
-  padding: 8px 12px;
-  border-radius: 4px;
-  border: 1px solid #ced4da;
-  font-size: 0.9em;
-  background-color: #fff;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  padding: 10px 15px;
+  border-radius: 6px; /* Softer radius */
+  border: 1px solid var(--color-border); /* Use CSS variable */
+  font-size: 0.95em;
+  background-color: var(--color-background); /* Use CSS variable */
+  color: var(--color-text); /* Use CSS variable */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .difficulty-selector select:focus {
-  border-color: #80bdff;
+  border-color: var(--color-primary); /* Use CSS variable */
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(var(--color-primary-rgb, 0, 123, 255), 0.25); /* Needs --color-primary-rgb or direct values */
 }
 
 .game-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 5px; /* Adjusted padding */
-  margin-bottom: 15px;
-  font-size: 0.95em;
-  min-height: 25px; /* Ensure it has some height even if message is empty */
+  padding: 12px 0; /* Adjusted padding */
+  margin-bottom: 20px;
+  font-size: 1em;
+  min-height: 30px;
 }
 
 .timer {
-  color: #28a745; /* Green for timer */
-  font-weight: bold;
+  color: #28a745; /* Keeping green for timer, or use a variable */
+  font-weight: 500; /* Slightly less bold */
+  font-size: 1.1em;
 }
 
 .status-message {
-  color: #17a2b8; /* Info blue for status messages */
-  font-style: italic;
+  color: var(--color-primary); /* Use CSS variable for info messages */
+  font-style: normal; /* Less emphasis, more direct */
   text-align: right;
-  flex-grow: 1; /* Allow message to take available space */
-  padding-left: 15px; /* Space between timer and message */
+  flex-grow: 1;
+  padding-left: 20px;
+  font-size: 0.9em;
 }
 
 .controls {
-  margin-top: 25px;
+  margin-top: 30px;
   display: flex;
-  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-  gap: 10px; /* Spacing between buttons */
+  flex-wrap: wrap;
+  gap: 12px; /* Slightly increased gap */
   justify-content: center;
 }
 
 .controls button {
-  padding: 10px 15px;
+  padding: 12px 20px; /* More padding */
   font-size: 1em;
-  border: none;
-  border-radius: 5px;
+  border: 1px solid transparent; /* Explicitly set border */
+  border-radius: 6px; /* Softer radius */
   cursor: pointer;
-  background-color: #007bff; /* Primary blue */
+  background-color: var(--color-primary); /* Use CSS variable */
   color: white;
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
-  min-width: 100px; /* Minimum width for buttons */
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease, border-color 0.2s ease;
+  min-width: 120px;
+  font-weight: 500;
 }
 
 .controls button:hover:not(:disabled) {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: translateY(-1px);
+  background-color: var(--color-primary-hover); /* Use CSS variable */
+  border-color: var(--color-primary-hover); /* Use CSS variable */
+  transform: translateY(-2px); /* Slightly more lift */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add subtle shadow on hover */
 }
 
 .controls button:active:not(:disabled) {
   transform: translateY(0px);
+  box-shadow: none; /* Remove shadow on active */
 }
 
 .controls button:disabled {
-  background-color: #6c757d; /* Gray for disabled buttons */
+  background-color: #6c757d; /* Standard disabled color */
+  border-color: #6c757d;
   cursor: not-allowed;
-  opacity: 0.7;
+  opacity: 0.65;
 }
 
 /* Responsive adjustments */
-@media (max-width: 600px) {
+@media (max-width: 768px) { /* Adjusted breakpoint */
   .App {
-    padding: 15px;
-    max-width: 95vw;
+    padding: 20px;
+    margin-top: 20px; /* Add margin for smaller screens */
+    margin-bottom: 20px;
   }
 
   .App-header h1 {
-    font-size: 2em;
-  }
-
-  .cell {
-    width: 35px; /* Slightly smaller cells for smaller screens */
-    height: 35px;
-    font-size: 1.2em;
+    font-size: 2.2em;
   }
 
   .controls button {
-    padding: 8px 12px;
-    font-size: 0.9em;
-    min-width: 80px;
+    padding: 10px 15px;
+    font-size: 0.95em;
+    min-width: 100px;
   }
 
   .game-info {
-    flex-direction: column; /* Stack timer and status message */
+    flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
   }
   .status-message {
     text-align: center;
@@ -151,24 +158,45 @@ body {
   }
 }
 
+@media (max-width: 480px) { /* Finer grain control for very small screens */
+  .App-header h1 {
+    font-size: 1.8em;
+  }
+   .cell { /* Assuming .cell is globally styled or adjust path */
+    width: 30px; 
+    height: 30px;
+    font-size: 1.1em;
+  }
+  .controls {
+    gap: 8px;
+  }
+  .controls button {
+    width: 100%; /* Make buttons full width on very small screens */
+    margin-bottom: 8px; /* Add margin between full-width buttons */
+  }
+  .difficulty-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .difficulty-selector select {
+    width: 80%;
+  }
+}
+
+/* Remove or adjust Vite default styles if they conflict */
 #root {
-  max-width: 1280px;
+  max-width: 100%; /* Allow our App container to control width */
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0; /* Remove root padding, body/App handles it */
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Remove logo styles if not used or restyle them */
+/*
+.logo, .logo.react, .card, .read-the-docs {
+  display: none; 
 }
 
 @keyframes logo-spin {
@@ -179,17 +207,4 @@ body {
     transform: rotate(360deg);
   }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+*/
