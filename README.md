@@ -21,14 +21,14 @@ This project is an interactive Sudoku game developed as a demonstration of moder
 
 ##  Tech Stack 
 
-These technologies were chosen to build this app
+These technologies were chosen to build this Sudoku game.
 
 *   **React (v19+):** Chosen for its component-based architecture, declarative UI, and extensive ecosystem, facilitating the creation of a modular and interactive user interface.
 
 *   **Lodash:** Employed for its utility functions, specifically for array manipulation (`_.shuffle`), deep cloning (`_.cloneDeep`) to ensure immutability in state management, and random number generation (`_.random`) for puzzle generation and hints. These utilities help write more concise and robust logic.
 
 
-## ⚙️ Software Engineering & Development Workflow
+##  Software Engineering & Development Workflow
 
 I developed this project adhering to best software development practices.
 
